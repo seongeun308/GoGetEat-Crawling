@@ -55,8 +55,11 @@ def get_kakaoMap_menu(driver, url):
     # 모든 메뉴 이름을 추출
     menus = []
     menu_elements = soup.find_all('span', class_='loss_word')
-    for element in menu_elements:
-        menus.append(element.text)
+    if menu_elements: 
+        for element in menu_elements:
+            menus.append(element.text)
+    else:
+        menus = None
     
     config.logging.info(f'--------------- end crawling {url}')
     
